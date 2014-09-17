@@ -16,7 +16,7 @@ public class Atril extends Tablero {
 	public void setFicha(Casilla newCas, int x, int y) {// metodo que le da
 														// nuevos valores a una
 														// ficha existente en la
-														// posicion x,y
+														// posicion x,y,
 		super.setCas(newCas, x, y);
 
 	}
