@@ -1,9 +1,7 @@
 import javax.swing.ImageIcon;
 
-
 public class ImagenLetra extends ImageIcon {
-	
-	
+
 	/**
 	 * 
 	 */
@@ -14,19 +12,16 @@ public class ImagenLetra extends ImageIcon {
 	private int valor;
 	protected boolean moving;
 	private boolean locked;
-	
-	
-	
-	public void setBloquear(boolean status){
+
+	public void setBloquear(boolean status) {
 		this.locked = status;
 	}
-	
-	
-	public boolean isBloqueada(){
+
+	public boolean isBloqueada() {
 		return this.locked;
 	}
-	
-	public  ImagenLetra(String imagePath){
+
+	public ImagenLetra(String imagePath) {
 		super(imagePath);
 		this.letter = "";
 		this.valor = 0;
@@ -35,17 +30,19 @@ public class ImagenLetra extends ImageIcon {
 		this.moving = false;
 		this.locked = false;
 	}
-	public ImagenLetra(String imagePath, int yp, int xp){
-		
+
+	public ImagenLetra(String imagePath, int yp, int xp) {
+
 		super(imagePath);
 		this.letter = "";
 		this.valor = 0;
-		this.x = xp*35;
-		this.y = yp*35;
+		this.x = xp * 35;
+		this.y = yp * 35;
 		this.locked = true;
 	}
-	public ImagenLetra(String imagePath, String letter, int valor, int x, int y){
-		
+
+	public ImagenLetra(String imagePath, String letter, int valor, int x, int y) {
+
 		super(imagePath);
 		this.letter = letter;
 		this.valor = valor;
@@ -53,25 +50,28 @@ public class ImagenLetra extends ImageIcon {
 		this.y = y;
 		this.locked = false;
 	}
-	public int getValor(){
+
+	public int getValor() {
 		return this.valor;
 	}
-	public String getLetter(){
+
+	public String getLetter() {
 		return this.letter;
 	}
-	public int getX(){
+
+	public int getX() {
 		return this.x;
 	}
-	public int getY(){
+
+	public int getY() {
 		return this.y;
 	}
-	public void setX(int x){
+
+	public void setX(int x) {
 		this.x = x;
 	}
-	public void setY(int y){
+
+	public void setY(int y) {
 		this.y = y;
 	}
 }
-
-
-
