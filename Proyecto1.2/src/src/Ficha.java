@@ -1,16 +1,20 @@
 public class Ficha {
-	
+
 	private int valor;
 	private String letra;
-	
-	Ficha(int valor,String letra){
-		this.letra=letra;
-		this.valor=valor;
+
+	Ficha(int valor, String letra) {// constructor que recibe un string y un
+									// int, y le asigana estos valores a la
+									// variable letra y valor respectivamente
+		this.letra = letra;
+		this.valor = valor;
 	}
-	public String getLetra(){
+
+	public String getLetra() {// metodo que retorna la variable letra
 		return letra;
 	}
-	public int getValor(){
-		return valor; 
-	} 
+
+	public int getValor() {// metodo que retorna la variable valor
+		return valor;
+	}
 }
