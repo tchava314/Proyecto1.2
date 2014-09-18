@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Fichas extends Lista {
 	Lista<Ficha> bolsa = new Lista<Ficha>();
 
@@ -48,4 +50,10 @@ public class Fichas extends Lista {
 		bolsa.addDataEnd(new Ficha(10, "Z"));
 
 	}// fin metodo crearfichas
+
+	public Ficha fichaAzar() {// metodo que devuelve una ficha al azar
+		Random azar = new Random();
+		int pos = azar.nextInt(bolsa.getSize());
+		return bolsa.getObject(pos);
+	}// fin metodo fichaAzar
 }// fin de la clase
