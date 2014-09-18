@@ -1,6 +1,6 @@
 public class Diccionario extends Lista<Lista<String>> {
 
-	private Lista<Lista<String>> diccionario;
+	public Lista<Lista<String>> dic = new Lista<Lista<String>>();
 
 	public Diccionario() {
 
@@ -8,13 +8,22 @@ public class Diccionario extends Lista<Lista<String>> {
 
 	}
 
-	public void creaDiccionario() {
+	private void creaDiccionario() {
 
-		for (int i = 65; i < 91; i++) {
+		for (int i = 97; i < 123; i++) {
+
 			Lista<String> temp = new Lista<String>();
-			diccionario.addDataEnd(temp.creaLista((char) i));
+			addDataEnd(temp.creaList(temp, (char) i));
+
 		}
 
+	}
+
+	public String getPalabra(int x, int y) {
+
+		String temp = getObject(x).getObject(y);
+
+		return temp;
 	}
 
 }

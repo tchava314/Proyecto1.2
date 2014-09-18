@@ -69,31 +69,32 @@ public class Lista<Ele> {
 		return size;
 	}
 
-	public Lista<String> creaLista(char x) {
-
-		Lista<String> listaLetra = new Lista<String>();
+	public Lista<String> creaList(Lista<String> lista, char x) {
+		BufferedReader br;
+		String dic;
 
 		try {
-			FileReader fr = new FileReader("src//src//CROSSWD.TXT");
+			FileReader fr = new FileReader("src//src//es_CR.dic");
 			br = new BufferedReader(fr);
 
-			String word;
-			word = br.readLine();
+			dic = br.readLine();
 
-			while (word.charAt(0) == x) {
+			while (dic != null) {
+				dic = br.readLine();
+				String[] word = dic.split("/");
 
-				// System.out.println(""+ word);
-				listaLetra.addDataEnd(word);
-				word = br.readLine();
+				if (word[0].charAt(0) == x) {
+					lista.addDataEnd(word[0]);
+				}
 
+				// System.out.println(word[0]);
 			}
+
 		} catch (Exception ex) {
 			System.out.println("conejo");
 
 		}
-
-		return listaLetra;
-
+		return lista;
 	}
 
 }
