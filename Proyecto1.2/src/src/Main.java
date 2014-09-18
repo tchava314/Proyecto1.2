@@ -17,7 +17,10 @@ public class Main {
 
 		// System.out.print("" + (char) 98);
 
-		System.out.println("" + dic.getPalabra(25, 0));
+		String z = "ababol";
+
+		System.out.println("" + dic.getPalabra(0, 99999));
+		System.out.println("" + (z.charAt(0) == (char) 97));
 
 	}
 }
