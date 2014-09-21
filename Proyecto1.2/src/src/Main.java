@@ -17,10 +17,10 @@ public class Main {
 
 		// System.out.print("" + (char) 98);
 
-		String z = "ababol";
+		String z = "zulaquear";
 
-		System.out.println("" + dic.getPalabra(0, 99999));
-		System.out.println("" + (z.charAt(0) == (char) 97));
+		System.out.println("" + dic.getPalabra(25, 0, 2));
+		// System.out.println("" + (z.charAt(0) == (char) 97));
 
 	}
 }

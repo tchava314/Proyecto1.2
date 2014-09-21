@@ -69,7 +69,7 @@ public class Lista<Ele> {
 		return size;
 	}
 
-	public Lista<String> creaList(Lista<String> lista, char x) {
+	public Lista<String> creaList(Lista<String> lista, char x, char y) {
 		BufferedReader br;
 		String dic;
 
@@ -83,7 +83,7 @@ public class Lista<Ele> {
 				dic = br.readLine();
 				String[] word = dic.split("/");
 
-				if (word[0].charAt(0) == x) {
+				if (word[0].charAt(0) == x && word[0].charAt(1) == y) {
 					lista.addDataEnd(word[0]);
 				}
 
