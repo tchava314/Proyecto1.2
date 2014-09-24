@@ -50,22 +50,7 @@ public class ImagenLetra extends ImageIcon {
 	}
 
 	public ImagenLetra(String imagePath, String letter, int valor, int x, int y) { // constructor
-																					// que
-																					// ademas
-																					// de
-																					// lo
-																					// anterior
-																					// asigna
-																					// un
-																					// valor
-																					// de
-																					// string
-																					// a
-																					// letra
-																					// y
-																					// un
-																					// valor
-
+				// que ademas de lo anterior asigna un valor de string a letra y un valor 
 		super(imagePath);
 		this.letter = letter;
 		this.valor = valor;

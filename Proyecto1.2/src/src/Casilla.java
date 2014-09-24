@@ -1,6 +1,9 @@
+import java.awt.Color;
+
 public class Casilla {
 	private Ficha ficha;
 	private String bonus;
+	private boolean isOcupado;
 
 	public Casilla(Ficha ficha) { // Contructor casilla atril
 		this.ficha = ficha;
@@ -16,7 +19,7 @@ public class Casilla {
 		return ficha;
 	}
 
-	public String getBonus() {// metodo que devuelve el valor de ña variable
+	public String getBonus() {// metodo que devuelve el valor de ï¿½a variable
 								// bonus
 		return bonus;
 	}
@@ -26,6 +29,14 @@ public class Casilla {
 											// casilla
 		this.ficha = newFicha;
 	}
+	
+	public boolean isOcupado() {//dice si la casilla esta ocupada
+		return isOcupado;
+	}
+	public void setOcupado(boolean isOcupado) {//estable si esta ocupado o no
+		this.isOcupado = isOcupado;
+	}
+	
 
 	public void setBonus(String bonus, Ficha ficha) {// metodo que reasigna un
 														// valor en

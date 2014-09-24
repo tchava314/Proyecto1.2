@@ -32,10 +32,9 @@ public class Tablero extends Lista<Lista<Casilla>> {
 	public void setCas(Casilla newCas,int x, int y){
 		Casilla oldCas= getCas(x,y) ;
 		
-		oldCas=newCas ;
-		
-		
+		oldCas=newCas ;	
 		
 	}
+	
 	
 }

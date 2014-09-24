@@ -13,28 +13,22 @@ public class PanelOpciones extends JPanel implements ActionListener {
 	
 	
 	PanelOpciones(){
-		Container contenedor= new Container();
-		contenedor.setLayout(null);  // Eliminamos el layout
-		
-		setSize(300,400); //tamano de la ventana
+		setLayout(null);
 		salto= new JButton("Saltar Turno");
-		add(salto);
-        salto.setBackground(new Color(200,200,200));//Se cambia el color del boton
-        salto.setBounds(200,250,150,40);//tamano del boton
+        salto.setBackground(new Color(240,160,100));//Se cambia el color del boton
+        salto.setBounds(80,200,150,40);//tamano del boton
         pasa= new JButton("Pasar Turno");
-        add(pasa);
         pasa.setBackground(new Color(200,200,200));//color
-        pasa.setBounds(200,220,150,40);//tamano
+        pasa.setBounds(80,250,150,40);//tamano
         bot3= new JButton("Ayuda");
-        add(bot3);
         bot3.setBackground(new Color(200,200,200));//color
-        bot3.setBounds(200,290,150,40);//tamano
+        bot3.setBounds(80,300,150,40);//tamano
         
         
         JLabel texto= new JLabel("Scrabble"); //etiqueta
         texto.setFont( new Font("serif", Font.PLAIN, 30));//letra y tamano de letra
         texto.setForeground(new Color(255,255,255));//color para la etiqueta
-        texto.setBounds(60,60,260,60); //tamano de cuadro
+        texto.setBounds(160,60,260,60); //tamano de cuadro
  
 		fondo= this.getClass().getResource("/Imagenes/fondo.jpg"); //trae la imagen
 		scra= new ImageIcon(fondo).getImage(); //ubica la imagen en la ventana
@@ -44,7 +38,11 @@ public class PanelOpciones extends JPanel implements ActionListener {
         pasa.addActionListener(this);
         bot3.addActionListener(this);
         
-		add(texto);
+        add(texto);
+        add(pasa);
+		add(salto);
+		add(bot3);
+		
         setVisible(true);
 	}
 	public void paintComponent(Graphics g){

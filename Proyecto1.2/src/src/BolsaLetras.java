@@ -40,8 +40,8 @@ public class BolsaLetras {
 		lstLetras.addDataEnd(new ImagenLetra("resources/L.gif", "L", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/L.gif", "L", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/Z.gif", "Z", 1, 0, 0));
-		lstLetras.addDataEnd(new ImagenLetra("resources/Ñ.gif", "Ñ", 1, 0, 0));
-		lstLetras.addDataEnd(new ImagenLetra("resources/Ñ.gif", "Ñ", 1, 0, 0));
+		lstLetras.addDataEnd(new ImagenLetra("resources/ï¿½.gif", "ï¿½", 1, 0, 0));
+		lstLetras.addDataEnd(new ImagenLetra("resources/ï¿½.gif", "ï¿½", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/O.gif", "O", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/O.gif", "O", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/O.gif", "O", 1, 0, 0));
@@ -51,10 +51,8 @@ public class BolsaLetras {
 		lstLetras.addDataEnd(new ImagenLetra("resources/O.gif", "O", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/O.gif", "O", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/O.gif", "O", 1, 0, 0));
-		lstLetras
-				.addDataEnd(new ImagenLetra("resources/cmd.gif", "*", 1, 0, 0));
-		lstLetras
-				.addDataEnd(new ImagenLetra("resources/cmd.gif", "*", 1, 0, 0));
+		lstLetras.addDataEnd(new ImagenLetra("resources/cmd.gif", "*", 1, 0, 0));
+		lstLetras.addDataEnd(new ImagenLetra("resources/cmd.gif", "*", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/J.gif", "J", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/X.gif", "X", 1, 0, 0));
 		lstLetras.addDataEnd(new ImagenLetra("resources/H.gif", "H", 1, 0, 0));
@@ -99,7 +97,7 @@ public class BolsaLetras {
 		lstLetras.addDataEnd(new ImagenLetra("resources/T.gif", "T", 1, 0, 0));
 	}
 
-	public int getLettersOnBag() {// retorna el tamaño de la lista LstLetras
+	public int getLettersOnBag() {// retorna el tamaï¿½o de la lista LstLetras
 		return lstLetras.getSize();
 	}
 
