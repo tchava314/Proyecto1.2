@@ -46,7 +46,7 @@ public class Diccionario2 extends Lista<Lista<String>> {
 				i = 26;
 				while (palabraD != null) {
 					palabraD = getPalabra(i, j);
-					if (palabraD == palabra) {
+					if (palabraD.equals(palabra)) {
 						return true;
 					}
 
