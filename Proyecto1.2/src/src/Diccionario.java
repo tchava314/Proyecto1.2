@@ -51,34 +51,27 @@ public class Diccionario extends Lista<Lista<Lista<String>>> {
 
 			if (palabra.charAt(0) == (char) letra) {
 
-				int letra2 = ABC.getObject(j);
-
 				while (j < 25 && cond2) {
-					letra2 = ABC.getObject(j);
+					int letra2 = ABC.getObject(j);
 
 					if (palabra.charAt(1) == (char) letra2) {
 						String palabraD = getPalabra(i, j, z);
 						cond1 = false;
 						cond2 = false;
+						System.out.println(palabraD);
 						while (palabraD != null) {
 							palabraD = getPalabra(i, j, z);
+							System.out.println(palabraD);
 							if (palabraD.equals(palabra)) {
 								return true;
 							}
-
 							z++;
-
 						}
-
-					} else {
-						j++;
 					}
-
+					j++;
 				}
-
-			} else {
-				i++;
 			}
+			i++;
 
 		}
 

@@ -97,4 +97,32 @@ public class Lista<Ele> {
 		return lista;
 	}
 
+	public Lista<String> creaList2(Lista<String> lista, char x) {
+		BufferedReader br;
+		String dic;
+
+		try {
+			FileReader fr = new FileReader("src//src//es_CR.dic");
+			br = new BufferedReader(fr);
+
+			dic = br.readLine();
+
+			while (dic != null) {
+				dic = br.readLine();
+				String[] word = dic.split("/");
+
+				if (word[0].charAt(0) == x) {
+					lista.addDataEnd(word[0]);
+				}
+
+				// System.out.println(word[0]);
+			}
+
+		} catch (Exception ex) {
+			System.out.println("conejo");
+
+		}
+		return lista;
+	}
+
 }
