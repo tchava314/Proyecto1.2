@@ -3,7 +3,7 @@ public class Ficha {
 	private int valor;
 	private String letra;
 	
-	Ficha(int valor,String letra){
+	public Ficha(int valor,String letra){
 		this.letra=letra;
 		this.valor=valor;
 	}
