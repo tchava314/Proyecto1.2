@@ -11,10 +11,10 @@ public class Diccionario extends Lista<Lista<Lista<String>>> {
 
 	private void creaDiccionario() {
 
-		for (int i = 97; i < 123; i++) {
+		for (int i = 65; i < 91; i++) {
 			Lista<Lista<String>> temp2 = new Lista<Lista<String>>();
 
-			for (int j = 97; j < 123; j++) {
+			for (int j = 65; j < 91; j++) {
 				Lista<String> temp = new Lista<String>();
 				temp2.addDataEnd(temp.creaList(temp, (char) i, (char) j));
 
@@ -45,23 +45,23 @@ public class Diccionario extends Lista<Lista<Lista<String>>> {
 		int letra = ABC.getObject(i);
 		boolean cond1 = true, cond2 = true;
 
-		while (i < 25 && cond1) {
+		while (i < 26 && cond1) {
 
 			letra = ABC.getObject(i);
 
 			if (palabra.charAt(0) == (char) letra) {
 
-				while (j < 25 && cond2) {
+				while (j < 26 && cond2) {
 					int letra2 = ABC.getObject(j);
 
 					if (palabra.charAt(1) == (char) letra2) {
 						String palabraD = getPalabra(i, j, z);
 						cond1 = false;
 						cond2 = false;
-						System.out.println(palabraD);
-						while (palabraD != null) {
+						// System.out.println(palabraD);
+						while (z < getObject(i).getObject(j).getSize()) {
 							palabraD = getPalabra(i, j, z);
-							System.out.println(palabraD);
+							// System.out.println(palabraD);
 							if (palabraD.equals(palabra)) {
 								return true;
 							}

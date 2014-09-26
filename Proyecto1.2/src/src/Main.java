@@ -2,7 +2,7 @@ public class Main {
 
 	public static void main(String arg[]) {
 
-		// Diccionario dic = new Diccionario();
+		Diccionario dic = new Diccionario();
 
 		// Lista<Lista<String>> dic = new Lista<Lista<String>>();
 		// Lista<String> lista = new Lista<String>();
@@ -17,14 +17,7 @@ public class Main {
 
 		// System.out.print("" + (char) 98);
 
-		String z = "arroz";
-
-		Readtxt am = new Readtxt();
-
-		Lista<String> temp = new Lista<String>();
-
-		am.creaLista(temp, (char) 97, (char) 121);
-		// System.out.println("" + (z.charAt(0) == (char) 97));
+		System.out.println(dic.isDicc("ZUZZO"));
 
 	}
 }

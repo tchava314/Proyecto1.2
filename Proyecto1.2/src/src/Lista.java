@@ -74,7 +74,7 @@ public class Lista<Ele> {
 		String dic;
 
 		try {
-			FileReader fr = new FileReader("src//src//es_CR.dic");
+			FileReader fr = new FileReader("src//src//diccionario.txt");
 			br = new BufferedReader(fr);
 
 			dic = br.readLine();
@@ -91,7 +91,7 @@ public class Lista<Ele> {
 			}
 
 		} catch (Exception ex) {
-			System.out.println("conejo");
+			// System.out.println("conejo");
 
 		}
 		return lista;
