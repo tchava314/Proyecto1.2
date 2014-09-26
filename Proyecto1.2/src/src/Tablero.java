@@ -10,7 +10,6 @@ public class Tablero extends Lista<Lista<Casilla>> {
 	newTab(sizeX,sizeY);
 	}
 	
-	
 	public void newTab(int x, int y){
 		
 			for(int i=0; i<x; i++){
@@ -22,10 +21,10 @@ public class Tablero extends Lista<Lista<Casilla>> {
 		     }
 	  }
 	
-	
 	public Casilla getCas(int x, int y){
 	
 		Casilla casXY = TAB.getObject(x).getObject(y);
+		
 		return casXY;
 	}
 	
