@@ -16,7 +16,8 @@ public class PanelOpciones extends JPanel implements ActionListener {
 	JButton NewGame, Salir, bot3, jug1, jug2, empezar;// para los botones
 	public Image scra;
 	public URL fondo;
-	char let, let2;
+	String let, let2;
+	Lista<Ficha> bolsa = new Fichas().crearFichas();
 
 	PanelOpciones() {
 		setLayout(null);
@@ -94,13 +95,13 @@ public class PanelOpciones extends JPanel implements ActionListener {
 
 		}
 		if (e.getSource() == jug1) {
-			let = JuegoUtils.letraAleatoria();
+			let = bolsa.EleAzar().getLetra();
 			System.out.println(let);
 			jug1.setText("jug1=" + let);
 
 		}
 		if (e.getSource() == jug2) {
-			let2 = JuegoUtils.letraAleatoria();
+			let2 = bolsa.EleAzar().getLetra();
 			System.out.println(let2);
 			jug2.setText("jug2=" + let2);
 		}
