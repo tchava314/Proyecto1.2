@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Main extends JFrame implements Runnable, ActionListener {
@@ -20,9 +22,29 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	int i, j;
 	private Tablero tablero = new Tablero();
 	JButton cuadro[][] = new JButton[15][15]; // crea una matriz de botones
+	PanelJugador jug1, jug2;
 	private static Main m1;
+	private String rifa1, rifa2;
+
+	Lista<String> lista = new Lista<String>();
+	Lista<String> lista2 = new Lista<String>();
 
 	public Main() {
+
+		lista.addDataEnd("F");
+		lista.addDataEnd("S");
+		lista.addDataEnd("A");
+		lista.addDataEnd("F");
+		lista.addDataEnd("Y");
+		lista.addDataEnd("T");
+		lista.addDataEnd("Z");
+		lista2.addDataEnd("R");
+		lista2.addDataEnd("E");
+		lista2.addDataEnd("C");
+		lista2.addDataEnd("V");
+		lista2.addDataEnd("X");
+		lista2.addDataEnd("M");
+		lista2.addDataEnd("N");
 
 		setSize(920, 600); // tamano de la ventana
 		setTitle("Scrabble"); // titulo de la ventana
@@ -33,11 +55,25 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		Container contenedor = getContentPane(); // se crea el contenedor
 		// se agregan los botones a la pantalla
 
-		contenedor.setLayout(new GridLayout(1, 2));
+		contenedor.setLayout(new GridLayout(1, 2, 50, 0));
 
 		JPanel paneltablero = new JPanel(); // crea un panel para el tablero
-		paneltablero.setLayout(new GridLayout(15, 15)); // hace que sea un
-														// cuadro 15x15
+		paneltablero.setLayout(new GridLayout(15, 15));// hace que sea un
+
+		JPanel panelJugds = new JPanel(); // crea un panel para el tablero
+		panelJugds.setLayout(new GridLayout(2, 1, 0, 50));// cuadro 15x15
+
+		JLabel texto = new JLabel("Scrabble"); // etiqueta
+		texto.setFont(new Font("serif", Font.PLAIN, 40));// letra y tamano de
+															// letra
+		texto.setForeground(new Color(255, 255, 255));// color para la etiqueta
+		texto.setBounds(160, 80, 260, 60); // tamano de cuadro
+
+		jug1 = new PanelJugador();
+		jug2 = new PanelJugador();
+
+		panelJugds.add(jug1);
+		panelJugds.add(jug2);
 
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 15; j++) {
@@ -119,14 +155,24 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		cuadro[5][7].setBackground(new Color(20, 100, 255));
 
 		add(paneltablero);
-		add(new PanelOpciones());
+		add(panelJugds);
 
 		setVisible(true);
 		principal = new Thread(this);
 		principal.start();
 	}
 
-	private void update() {
+	private void update() throws InterruptedException {
+		if (jug1.rifa && jug2.rifa) {
+			rifa1 = JuegoUtils.ganadorrifa2(jug1.getLet(), jug2.getLet());
+			rifa2 = JuegoUtils.ganadorrifa2(jug2.getLet(), jug1.getLet());
+
+			jug1.Rifa.setText(rifa1);
+			jug2.Rifa.setText(rifa2);
+
+			jug1.setText(lista);
+			jug2.setText(lista2);
+		}
 
 	}
 
@@ -139,7 +185,12 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		start = true;
 
 		while (start) {
-			update();
+			try {
+				update();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			render();
 
 			try {
