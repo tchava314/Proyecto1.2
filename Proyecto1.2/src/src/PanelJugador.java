@@ -22,6 +22,7 @@ public class PanelJugador extends JPanel implements ActionListener {
 	public URL fondo;
 	char let;
 	public boolean rifa = false;
+	String texto;
 
 	public Lista<String> lista1;
 
@@ -35,7 +36,7 @@ public class PanelJugador extends JPanel implements ActionListener {
 
 		for (int i = 0; i < 7; i++) {
 			listaBotones.addDataEnd(new JButton());
-
+			listaBotones.getObject(i).addActionListener(this);
 		}
 
 		JLabel texto = new JLabel("Jugador"); // etiqueta
@@ -62,9 +63,10 @@ public class PanelJugador extends JPanel implements ActionListener {
 
 	}
 
-	public void setText(Lista<String> lista) {
+	public void setText(Tablero atril2) {
 		for (int i = 0; i < 7; i++) {
-			listaBotones.getObject(i).setText(lista.getObject(i));
+			listaBotones.getObject(i).setText(
+					atril2.getCas(i, 1).getFicha().getLetra());
 
 		}
 
@@ -79,6 +81,10 @@ public class PanelJugador extends JPanel implements ActionListener {
 		return let;
 	}
 
+	public String getLetra() {
+		return texto;
+	}
+
 	public void actionPerformed(ActionEvent e) {// sobreescribimos el metodo del
 												// listener
 
@@ -86,6 +92,11 @@ public class PanelJugador extends JPanel implements ActionListener {
 			let = JuegoUtils.letraAleatoria();
 			rifa = true;
 			System.out.println(let);
+
+			if (e.getSource() == listaBotones.getObject(0)) {
+				texto = listaBotones.getObject(0).getText();
+				System.out.println(texto);
+			}
 
 		}
 

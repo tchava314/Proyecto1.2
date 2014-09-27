@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.Random;
 
 public class Lista<Ele> {
 
@@ -56,6 +57,29 @@ public class Lista<Ele> {
 			temp.setNext(newNode);
 		}
 		size++;
+	}
+
+	public void eliminar(Ele letra) {
+		Nodo<Ele> act = head, ant = null;
+		boolean find = false;
+		while ((act != null) && (!find)) {
+			find = (act.getData() == letra);
+			if (!find) {
+				ant = act;
+				act = act.getNext();
+			}
+		}
+		if (act != null) {
+			if (act == head) {
+				head = act.getNext();
+			} else {
+				ant.setNext(act.getNext());
+			}
+			act = null;
+
+		}
+
+		size = size - 1;
 	}
 
 	public boolean isEmpy() {
@@ -124,5 +148,14 @@ public class Lista<Ele> {
 		}
 		return lista;
 	}
+
+	public Ele EleAzar() {// metodo que devuelve un elemento al azar
+		Random azar = new Random();
+		int pos = azar.nextInt(this.getSize());
+		Ele x = this.getObject(pos);
+		// this.eliminar(x);
+		return x;
+
+	}// fin metodo fichaAzar
 
 }

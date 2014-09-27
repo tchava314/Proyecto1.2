@@ -3,19 +3,19 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Main extends JFrame implements Runnable, ActionListener {
+public class Main extends JFrame implements Runnable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final ActionEvent ActionEvent = null;
 	boolean start;
 	Thread principal;
 
@@ -24,27 +24,15 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	JButton cuadro[][] = new JButton[15][15]; // crea una matriz de botones
 	PanelJugador jug1, jug2;
 	private static Main m1;
-	private String rifa1, rifa2;
+	private String rifa1, rifa2, text;
 
-	Lista<String> lista = new Lista<String>();
-	Lista<String> lista2 = new Lista<String>();
+	Tablero atril1, atril2;
 
 	public Main() {
 
-		lista.addDataEnd("F");
-		lista.addDataEnd("S");
-		lista.addDataEnd("A");
-		lista.addDataEnd("F");
-		lista.addDataEnd("Y");
-		lista.addDataEnd("T");
-		lista.addDataEnd("Z");
-		lista2.addDataEnd("R");
-		lista2.addDataEnd("E");
-		lista2.addDataEnd("C");
-		lista2.addDataEnd("V");
-		lista2.addDataEnd("X");
-		lista2.addDataEnd("M");
-		lista2.addDataEnd("N");
+		Lista<Ficha> bolsa = new Fichas().crearFichas();
+		atril1 = new Atril().repartirFichas(bolsa);
+		atril2 = new Atril().repartirFichas(bolsa);
 
 		setSize(920, 600); // tamano de la ventana
 		setTitle("Scrabble"); // titulo de la ventana
@@ -68,6 +56,8 @@ public class Main extends JFrame implements Runnable, ActionListener {
 															// letra
 		texto.setForeground(new Color(255, 255, 255));// color para la etiqueta
 		texto.setBounds(160, 80, 260, 60); // tamano de cuadro
+
+		this.addKeyListener(new teclado(this));
 
 		jug1 = new PanelJugador();
 		jug2 = new PanelJugador();
@@ -162,6 +152,17 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		principal.start();
 	}
 
+	public void actionPerformed(ActionEvent e) {
+		Object src = e.getSource();
+		System.out.println("ffs");
+
+		if (src == cuadro[0][0]) {
+			cuadro[0][1].setText(text);
+			System.out.println("ffs");
+		}
+
+	}
+
 	private void update() throws InterruptedException {
 		if (jug1.rifa && jug2.rifa) {
 			rifa1 = JuegoUtils.ganadorrifa2(jug1.getLet(), jug2.getLet());
@@ -170,8 +171,11 @@ public class Main extends JFrame implements Runnable, ActionListener {
 			jug1.Rifa.setText(rifa1);
 			jug2.Rifa.setText(rifa2);
 
-			jug1.setText(lista);
-			jug2.setText(lista2);
+			jug1.setText(atril1);
+			jug2.setText(atril2);
+
+			text = jug1.getLetra();
+
 		}
 
 	}
@@ -185,6 +189,7 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		start = true;
 
 		while (start) {
+			actionPerformed(ActionEvent);
 			try {
 				update();
 			} catch (InterruptedException e1) {
@@ -208,21 +213,6 @@ public class Main extends JFrame implements Runnable, ActionListener {
 
 		m1 = new Main();
 		System.out.println("aaaa");
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		if (src == cuadro[0][0]) {
-			System.out.println(0);
-			System.out.println(0);
-
-		}
-		if (src == cuadro[0][1]) {
-			System.out.println(0);
-			System.out.println(1);
-
-		}
-
 	}
 
 }
