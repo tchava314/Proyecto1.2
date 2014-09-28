@@ -21,7 +21,7 @@ public class PanelJugador extends JPanel implements ActionListener{
 
 	Lista<JButton> listaBotones = new Lista<JButton>();
 
-	PanelJugador() {
+	public PanelJugador() {
 		setLayout(new GridLayout(2, 0, 20, 20));
 		Rifa = new JButton("Rifa");
 		Rifa.setBackground(new Color(127, 255, 212));// Se cambia el color
@@ -49,6 +49,8 @@ public class PanelJugador extends JPanel implements ActionListener{
 
 		// add(texto);
 		add(Rifa);
+		
+		
 		for (int i = 0; i < 7; i++) {
 			add(listaBotones.getObject(i));
 
@@ -81,6 +83,10 @@ public class PanelJugador extends JPanel implements ActionListener{
 	
 	
 	class Mover extends JButton implements MouseMotionListener{    
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		private int x, y;
 		public Mover(){
 			//super.setText(text);
@@ -91,14 +97,16 @@ public class PanelJugador extends JPanel implements ActionListener{
         public void mouseDragged(MouseEvent mme) {
             //agarra en boton en x ubicacion
         
-        	x=this.getX() + mme.getX() - this.getWidth() / 3;
-        	y=this.getY() + mme.getY() - this.getHeight() / 3;
+        	//x=this.getX() + mme.getX() - this.getWidth()/3;
+        	//y=this.getY() + mme.getY() - this.getHeight()/3;
        
 		    setLocation(x,y);
             
 			}
 
 	    public void mouseMoved(MouseEvent mme) {}
+
+		
     
     }
 	
@@ -109,16 +117,17 @@ public class PanelJugador extends JPanel implements ActionListener{
 		if (e.getSource() == Rifa) {
 			let = JuegoUtils.letraAleatoria();
 			rifa = true;
+			
 			System.out.println(let);
+		}
+		for (int i = 0; i < 7; i++) {
 
-			if (e.getSource() == listaBotones.getObject(0)) {
-				texto = listaBotones.getObject(0).getText();
+			if (e.getSource() == listaBotones.getObject(i)) {
+
+				texto = listaBotones.getObject(i).getText();
 				System.out.println(texto);
-			}
-			else{
 			}
 
 		}
-
 	}
 }

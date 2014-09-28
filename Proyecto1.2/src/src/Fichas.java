@@ -48,5 +48,8 @@ public class Fichas extends Lista {
 		bolsa.addDataEnd(new Ficha(10, "Z"));
 		return bolsa;
 	}// fin metodo crearfichas
+	public void eliminaFicha(String letra){
+		bolsa.eliminar(letra);
+	}
 
 }// fin de la clase

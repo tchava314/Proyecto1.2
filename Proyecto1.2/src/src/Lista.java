@@ -59,7 +59,7 @@ public class Lista<Ele> {
 		size++;
 	}
 
-	public void eliminar(Ele letra) {
+	public void eliminar(String letra) {
 		Nodo<Ele> act = head, ant = null;
 		boolean find = false;
 		while ((act != null) && (!find)) {

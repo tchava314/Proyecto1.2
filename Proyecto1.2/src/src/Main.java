@@ -1,15 +1,19 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.*;
+import java.io.BufferedReader;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Main extends JFrame implements Runnable {
+public class Main extends JFrame implements Runnable, ActionListener {
 
 	/**
 	 * 
@@ -19,12 +23,13 @@ public class Main extends JFrame implements Runnable {
 	boolean start;
 	Thread principal;
 
-	int i, j;
+	int x=0;
+	int y=0;
 	private Tablero tablero = new Tablero();
 	JButton cuadro[][] = new JButton[15][15]; // crea una matriz de botones
 	PanelJugador jug1, jug2;
 	private static Main m1;
-	private String rifa1, rifa2, text;
+	private String rifa1, rifa2, text,hola;
 
 	Tablero atril1, atril2;
 
@@ -68,9 +73,11 @@ public class Main extends JFrame implements Runnable {
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 15; j++) {
 				cuadro[i][j] = new JButton();
+				cuadro[i][j].addActionListener(this);
 				cuadro[i][j].setBounds((50), (50), 100, 100);
 				paneltablero.add(cuadro[i][j]);
-			}
+		
+			}	
 		}
 		
 		cuadro[0][3].setBackground(Color.cyan);
@@ -144,7 +151,6 @@ public class Main extends JFrame implements Runnable {
 		cuadro[13][9].setBackground(new Color(20, 100, 255));
 		cuadro[5][7].setBackground(new Color(20, 100, 255));
 		
-
 		add(paneltablero);
 		add(panelJugds);
 		
@@ -152,23 +158,29 @@ public class Main extends JFrame implements Runnable {
 		principal = new Thread(this);
 		principal.start();
 	}
+   
 	
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		System.out.println("ffs");
+		
+		for (int i = 0; i < 15; i++) {
+			for (int j = 0; j < 15; j++) {
+				if (src == cuadro[i][j]) {
+					cuadro[i][j].setText(text);
+				}
+			}
 
-		if (src == cuadro[0][0]) {
-			cuadro[0][1].setText(text);
-			System.out.println("ffs");
 		}
 
 	}
+	
+	
 
 	private void update() throws InterruptedException {
 		if (jug1.rifa && jug2.rifa) {
 			rifa1 = JuegoUtils.ganadorrifa2(jug1.getLet(), jug2.getLet());
 			rifa2 = JuegoUtils.ganadorrifa2(jug2.getLet(), jug1.getLet());
-
+     
 			jug1.Rifa.setText(rifa1);
 			jug2.Rifa.setText(rifa2);
 
@@ -180,6 +192,12 @@ public class Main extends JFrame implements Runnable {
 		}
 
 	}
+	private void poner(){
+		cuadro[7][7].setText(text);
+		//Fichas().eliminarFicha("A");
+			}
+		
+
 
 	private void render() {
 
@@ -190,7 +208,6 @@ public class Main extends JFrame implements Runnable {
 		start = true;
 
 		while (start) {
-			//actionPerformed(ActionEvent);
 			try {
 				update();
 			} catch (InterruptedException e1) {
@@ -215,5 +232,10 @@ public class Main extends JFrame implements Runnable {
 		m1 = new Main();
 		System.out.println("aaaa");
 	}
+
+
+
+	
+
 
 }
