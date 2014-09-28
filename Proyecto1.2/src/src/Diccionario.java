@@ -1,3 +1,4 @@
+
 public class Diccionario extends Lista<Lista<Lista<String>>> {
 
 	public Lista<Integer> ABC = new Lista<Integer>();

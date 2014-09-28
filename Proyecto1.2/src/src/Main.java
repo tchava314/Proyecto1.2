@@ -4,16 +4,28 @@ public class Main {
 	public static void main (String arg[]){
 		
 		
-		
-		char a=97;
+		/**char a=97;
 		Lista<Lista<String>> ABC= new Lista<Lista<String>>();
 		Lista<String> letraA ;
+		**/
 		
 		
-		
-		Tablero tablero= new Tablero();
+		Tablero t= new Tablero(new Diccionario());
 		//tablero.setCas(new Casilla("g",4), 5, 5);
-		tablero.setCas(new Casilla(new Ficha(0,null)),0,0);
+		t.getCas(9, 0).setFicha(new Ficha(3,"R"));
+		t.getCas(1, 0).setFicha(new Ficha(3,"A"));
+		t.getCas(2, 0).setFicha(new Ficha(3,"T"));
+		t.getCas(3, 0).setFicha(new Ficha(3,"A"));
+		t.getCas(4, 0).setFicha(new Ficha(3,"O"));
+		//t.getCas(8, 0 ).setFicha(new Ficha(3,"p"));
+		/*t.getCas(1, 0).setFicha(new Ficha(3,"e"));
+		t.getCas(9, 0).setFicha(new Ficha(3,"r"));
+		t.getCas(4, 0).setFicha(new Ficha(3,"r"));
+		t.getCas(5, 0).setFicha(new Ficha(3,"o"));
+		*/
+		//System.out.print(t.leer("f", 10));
+		System.out.print(sacaP.sumar("f",3, 0, t));	
+		/**tablero.setCas(new Casilla(new Ficha(0,null)),0,0);
 		Casilla algo=tablero.getCas(5, 5);
 		
 		System.out.print(""+algo.getBonus());
@@ -35,9 +47,10 @@ public class Main {
 		letraA = ABC.getObject(0);
 		
 		letraA= letraA.creaLista(a);
-		
-		
-		
+		String b="perro";
+		String c="perro";
+		System.out.print(b==c);
+		**/
 		
 		
 		

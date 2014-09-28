@@ -3,7 +3,7 @@ public class Ficha {
 	private int valor;
 	private String letra;
 
-	Ficha(int valor, String letra) { // constructor que recibe un string que
+	public Ficha(int valor, String letra) { // constructor que recibe un string que
 										// sera signado a la variable letra, y
 										// un int que sera asiganado a la
 										// variable valor

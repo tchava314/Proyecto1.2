@@ -71,31 +71,32 @@ public class Lista<Ele> {
 		return size;
 	}
 	
-	public Lista<String> creaLista(char x){
-		
-		Lista<String> listaLetra= new Lista<String>();
-		
-		try{
-			FileReader fr = new FileReader("src//CROSSWD.TXT");
+	public Lista<String> creaList(Lista<String> lista, char x, char y) {
+		BufferedReader br;
+		String dic;
+
+		try {
+			FileReader fr = new FileReader("src//src//diccionario.txt");
 			br = new BufferedReader(fr);
-			
-			String word;
-			 word = br.readLine();
-			 
-			while( word.charAt(0) == x  ){
-				
-				//System.out.println(""+ word);
-				listaLetra.addDataEnd(word);
-				word = br.readLine();
-				
+
+			dic = br.readLine();
+
+			while (dic != null) {
+				dic = br.readLine();
+				String[] word = dic.split("/");
+
+				if (word[0].charAt(0) == x && word[0].charAt(1) == y) {
+					lista.addDataEnd(word[0]);
+				}
+
+				// System.out.println(word[0]);
 			}
-		}catch(Exception ex){
-			System.out.println("conejo");
-			
+
+		} catch (Exception ex) {
+			// System.out.println("conejo");
+
 		}
-		
-		return listaLetra;
-		
+		return lista;
 	}
 	
 	
