@@ -4,11 +4,13 @@ public class Tablero extends Lista<Lista<Casilla>> {
 	
 	private final int sizeX=15, sizeY=15;
 	public Lista<Lista<Casilla>> TAB = new Lista<Lista<Casilla>>();
+	private Casilla oldCas;
 	
 	public Tablero(){
 	
 	newTab(sizeX,sizeY);
 	}
+	
 	
 	public void newTab(int x, int y){
 		
@@ -21,19 +23,20 @@ public class Tablero extends Lista<Lista<Casilla>> {
 		     }
 	  }
 	
+	
 	public Casilla getCas(int x, int y){
 	
 		Casilla casXY = TAB.getObject(x).getObject(y);
-		
 		return casXY;
 	}
 	
 	public void setCas(Casilla newCas,int x, int y){
-		Casilla oldCas= getCas(x,y) ;
+		oldCas = getCas(x,y);
 		
-		oldCas=newCas ;	
+		oldCas=newCas ;
+		
+		
 		
 	}
-	
 	
 }
