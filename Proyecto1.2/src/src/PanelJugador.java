@@ -82,7 +82,7 @@ public class PanelJugador extends JPanel implements ActionListener{
 	}
 	
 	
-	class Mover extends JButton implements MouseMotionListener{    
+	class Mover extends JButton implements MouseListener{    
 		/**
 		 * 
 		 */
@@ -90,21 +90,58 @@ public class PanelJugador extends JPanel implements ActionListener{
 		private int x, y;
 		public Mover(){
 			//super.setText(text);
-			addMouseMotionListener(this);//lo convierte en mousemotion
+			addMouseListener(this);//lo convierte en mousemotion
+			//this.setText(null);
 
 			}
 
-        public void mouseDragged(MouseEvent mme) {
+        //public void mouseDragged(MouseEvent mme) {
             //agarra en boton en x ubicacion
         
         	//x=this.getX() + mme.getX() - this.getWidth()/3;
         	//y=this.getY() + mme.getY() - this.getHeight()/3;
        
-		    setLocation(x,y);
+        	//listaBotones.getObject(0).setText("y");
+        	//setLocation(x,y);
             
-			}
+//			}
 
-	    public void mouseMoved(MouseEvent mme) {}
+	    //public void mouseMoved(MouseEvent mme) {}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			setLocation(x,y);
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			setBackground(Color.cyan);
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			setBackground(null);
+			setText(null);
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			setBackground(Color.cyan);
+			//setBackground(new Color(141,238,238));
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			setBackground(null);
+		}
 
 		
     
