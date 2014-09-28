@@ -15,7 +15,6 @@ public class Lista<Ele> {
 		size=0;
 	}
 	
-	
 	public Ele getObject(int pos){
 		int count=0;
 		Nodo<Ele> temp= head;
