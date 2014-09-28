@@ -3,14 +3,14 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Main extends JFrame implements Runnable {
-
+public class Main extends JFrame implements Runnable, ActionListener {
 	/**
 	 * 
 	 */
@@ -20,13 +20,20 @@ public class Main extends JFrame implements Runnable {
 	Thread principal;
 
 	int i, j;
+	int x = 0;
+	int y = 0;
+	boolean lock = true;
 	private Tablero tablero = new Tablero();
-	JButton cuadro[][] = new JButton[15][15]; // crea una matriz de botones
+	JButton cuadro[][] = new JButton[15][15], derecha, arriba, abajo,
+			izquierda, poner; // crea una matriz de botones
+	JButton temp, temp2;
 	PanelJugador jug1, jug2;
 	private static Main m1;
 	private String rifa1, rifa2, text;
 
 	Tablero atril1, atril2;
+	private Color color;
+	private boolean move = true;
 
 	public Main() {
 
@@ -34,7 +41,7 @@ public class Main extends JFrame implements Runnable {
 		atril1 = new Atril().repartirFichas(bolsa);
 		atril2 = new Atril().repartirFichas(bolsa);
 
-		setSize(920, 600); // tamano de la ventana
+		setSize(1300, 700); // tamano de la ventana
 		setTitle("Scrabble"); // titulo de la ventana
 		setLocationRelativeTo(null); // ubica la ventana en el centro de la
 										// pantalla
@@ -43,21 +50,37 @@ public class Main extends JFrame implements Runnable {
 		Container contenedor = getContentPane(); // se crea el contenedor
 		// se agregan los botones a la pantalla
 
-		contenedor.setLayout(new GridLayout(1, 2, 50, 0));
+		contenedor.setLayout(new GridLayout(1, 2, 10, 0));
 
 		JPanel paneltablero = new JPanel(); // crea un panel para el tablero
 		paneltablero.setLayout(new GridLayout(15, 15));// hace que sea un
 
 		JPanel panelJugds = new JPanel(); // crea un panel para el tablero
-		panelJugds.setLayout(new GridLayout(2, 1, 0, 50));// cuadro 15x15
+		panelJugds.setLayout(new GridLayout(7, 2, 0, 10));// cuadro 15x15
 
 		JLabel texto = new JLabel("Scrabble"); // etiqueta
 		texto.setFont(new Font("serif", Font.PLAIN, 40));// letra y tamano de
 															// letra
 		texto.setForeground(new Color(255, 255, 255));// color para la etiqueta
 		texto.setBounds(160, 80, 260, 60); // tamano de cuadro
+		arriba = new JButton("Arriba");
+		abajo = new JButton("Abajo");
+		derecha = new JButton("Derecha");
+		izquierda = new JButton("Izquierda");
+		poner = new JButton("Poner");
 
-		this.addKeyListener(new teclado(this));
+		poner.addActionListener(this);
+		arriba.addActionListener(this);
+		abajo.addActionListener(this);
+		derecha.addActionListener(this);
+		izquierda.addActionListener(this);
+
+		panelJugds.add(poner);
+		panelJugds.add(arriba);
+
+		panelJugds.add(abajo);
+		panelJugds.add(izquierda);
+		panelJugds.add(derecha);
 
 		jug1 = new PanelJugador();
 		jug2 = new PanelJugador();
@@ -152,17 +175,6 @@ public class Main extends JFrame implements Runnable {
 		principal.start();
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-		System.out.println("ffs");
-
-		if (src == cuadro[0][0]) {
-			cuadro[0][1].setText(text);
-			System.out.println("ffs");
-		}
-
-	}
-
 	private void update() throws InterruptedException {
 		if (jug1.rifa && jug2.rifa) {
 			rifa1 = JuegoUtils.ganadorrifa2(jug1.getLet(), jug2.getLet());
@@ -180,7 +192,24 @@ public class Main extends JFrame implements Runnable {
 
 	}
 
+	private void mover() {
+
+		if (lock) {
+
+			temp = cuadro[x][y];
+			temp.setBackground(new Color(80, 80, 255));
+		}
+
+	}
+
+	private void poner() {
+		temp.setBackground(new Color(255, 255, 255));
+		temp.setText(text);
+	}
+
 	private void render() {
+
+		mover();
 
 	}
 
@@ -189,7 +218,7 @@ public class Main extends JFrame implements Runnable {
 		start = true;
 
 		while (start) {
-			actionPerformed(ActionEvent);
+
 			try {
 				update();
 			} catch (InterruptedException e1) {
@@ -213,6 +242,54 @@ public class Main extends JFrame implements Runnable {
 
 		m1 = new Main();
 		System.out.println("aaaa");
+	}
+
+	public void setDxy(int dx, int dy) {
+		// TODO Auto-generated method stub
+
+		x += dx;
+		y += dy;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		// System.out.println("hhd");
+		Object src = e.getSource();
+		if (src == arriba) {
+			if (y <= 15) {
+
+				temp2 = temp;
+				temp2.setBackground(color);
+				setDxy(-1, 0);
+			}
+		}
+		if (src == abajo) {
+			if (y >= 0) {
+				temp2 = temp;
+				temp2.setBackground(color);
+				setDxy(1, 0);
+			}
+		}
+		if (src == derecha) {
+			if (x < 15) {
+				temp2 = temp;
+				temp2.setBackground(color);
+				setDxy(0, 1);
+			}
+		}
+		if (src == izquierda) {
+			if (x > 0) {
+				temp2 = temp;
+				temp2.setBackground(color);
+				setDxy(0, -1);
+			}
+		}
+		if (src == poner) {
+			lock = false;
+			poner();
+		}
+
 	}
 
 }

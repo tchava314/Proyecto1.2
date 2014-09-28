@@ -40,10 +40,9 @@ public class PanelJugador extends JPanel implements ActionListener {
 		}
 
 		JLabel texto = new JLabel("Jugador"); // etiqueta
-		texto.setFont(new Font("serif", Font.PLAIN, 40));// letra y tamano de
-															// letra
-		texto.setForeground(new Color(255, 255, 255));// color para la etiqueta
-		texto.setBounds(160, 80, 260, 60); // tamano de cuadro
+		texto.setFont(new Font("serif", Font.PLAIN, 4));// letra y tamano de
+														// letra
+		texto.setForeground(new Color(0, 0, 0));// color para la etiqueta
 
 		fondo = this.getClass().getResource("Imagenes/fondo.jpg"); // trae la
 																	// imagen
@@ -92,12 +91,15 @@ public class PanelJugador extends JPanel implements ActionListener {
 			let = JuegoUtils.letraAleatoria();
 			rifa = true;
 			System.out.println(let);
+		}
 
-			if (e.getSource() == listaBotones.getObject(0)) {
-				texto = listaBotones.getObject(0).getText();
+		for (int i = 0; i < 7; i++) {
+
+			if (e.getSource() == listaBotones.getObject(i)) {
+
+				texto = listaBotones.getObject(i).getText();
 				System.out.println(texto);
 			}
-
 		}
 
 	}
