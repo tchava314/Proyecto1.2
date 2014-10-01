@@ -179,20 +179,17 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		if (jug1.rifa && jug2.rifa) {
 			rifa1 = JuegoUtils.ganadorrifa2(jug1.getLet(), jug2.getLet());
 			rifa2 = JuegoUtils.ganadorrifa2(jug2.getLet(), jug1.getLet());
-			if (rifa1.equals(jug2)) {
-				jug1.Rifa.setText(rifa1);
-				jug2.Rifa.setText(rifa2);
-			} else {
-				jug1.Rifa.setText(rifa1);
-				jug2.Rifa.setText(rifa2);
 
-				jug1.setText(atril1);
-				jug2.setText(atril2);
+			jug1.Rifa.setText(rifa1);
+			jug2.Rifa.setText(rifa2);
 
-				text = jug1.getLetra();
+			jug1.setText(atril1);
+			jug2.setText(atril2);
 
-			}
+			text = jug1.getLetra();
+
 		}
+
 	}
 
 	private void mover() {
