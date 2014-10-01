@@ -27,6 +27,9 @@ public class JuegoUtils {
 	}
 
 	public static String ganadorrifa2(char jug1, char jug2) {
+		if (turnoSalida(jug1) == (turnoSalida(jug2))) {
+			return "Empate";
+		}
 		if ((turnoSalida(jug1) > turnoSalida(jug2))) {
 
 			return "Ganaste";

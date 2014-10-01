@@ -198,7 +198,7 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	private void mover() {
 
 		if (lock) {
-
+			lock = false;
 			temp = cuadro[x][y];
 			temp.setBackground(new Color(80, 80, 255));
 		}
@@ -211,6 +211,76 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	}
 
 	private void render() {
+		cuadro[0][3].setBackground(Color.cyan);
+		cuadro[0][11].setBackground(Color.cyan);
+		cuadro[2][6].setBackground(Color.cyan);
+		cuadro[2][8].setBackground(Color.cyan);
+		cuadro[3][7].setBackground(Color.cyan);
+		cuadro[3][0].setBackground(Color.cyan);
+
+		cuadro[3][14].setBackground(Color.cyan);
+		cuadro[6][2].setBackground(Color.cyan);
+		cuadro[6][6].setBackground(Color.cyan);
+		cuadro[6][8].setBackground(Color.cyan);
+		cuadro[6][12].setBackground(Color.cyan);
+		cuadro[7][3].setBackground(Color.cyan);
+		cuadro[7][11].setBackground(Color.cyan);
+		cuadro[8][2].setBackground(Color.cyan);
+		cuadro[8][6].setBackground(Color.cyan);
+		cuadro[8][8].setBackground(Color.cyan);
+		cuadro[8][12].setBackground(Color.cyan);
+		cuadro[11][0].setBackground(Color.cyan);
+		cuadro[11][7].setBackground(Color.cyan);
+		cuadro[11][14].setBackground(Color.cyan);
+		cuadro[12][6].setBackground(Color.cyan);
+		cuadro[12][8].setBackground(Color.cyan);
+		cuadro[14][3].setBackground(Color.cyan);
+		cuadro[14][11].setBackground(Color.cyan);
+
+		cuadro[0][0].setBackground(Color.red);
+		cuadro[7][14].setBackground(Color.red);
+		cuadro[0][14].setBackground(Color.red);
+		cuadro[7][0].setBackground(Color.red);
+		cuadro[14][0].setBackground(Color.red);
+		cuadro[14][7].setBackground(Color.red);
+		cuadro[0][7].setBackground(Color.red);
+		cuadro[14][14].setBackground(Color.red);
+
+		cuadro[1][1].setBackground(new Color(255, 160, 100));
+		cuadro[2][2].setBackground(new Color(255, 160, 100));
+		cuadro[3][3].setBackground(new Color(255, 160, 100));
+		cuadro[4][4].setBackground(new Color(255, 160, 100));
+
+		cuadro[10][10].setBackground(new Color(255, 160, 100));
+		cuadro[11][11].setBackground(new Color(255, 160, 100));
+		cuadro[12][12].setBackground(new Color(255, 160, 100));
+		cuadro[13][13].setBackground(new Color(255, 160, 100));
+
+		cuadro[4][10].setBackground(new Color(255, 160, 100));
+		cuadro[10][4].setBackground(new Color(255, 160, 100));
+		cuadro[1][13].setBackground(new Color(255, 160, 100));
+		cuadro[2][12].setBackground(new Color(255, 160, 100));
+		cuadro[3][11].setBackground(new Color(255, 160, 100));
+		cuadro[13][1].setBackground(new Color(255, 160, 100));
+		cuadro[12][2].setBackground(new Color(255, 160, 100));
+		cuadro[11][3].setBackground(new Color(255, 160, 100));
+		cuadro[7][7].setBackground(new Color(255, 160, 100));
+
+		cuadro[0][3].setBackground(Color.cyan);
+
+		cuadro[1][5].setBackground(new Color(20, 100, 255));
+		cuadro[1][9].setBackground(new Color(20, 100, 255));
+		cuadro[5][1].setBackground(new Color(20, 100, 255));
+		cuadro[5][9].setBackground(new Color(20, 100, 255));
+		cuadro[5][5].setBackground(new Color(20, 100, 255));
+		cuadro[5][13].setBackground(new Color(20, 100, 255));
+		cuadro[9][1].setBackground(new Color(20, 100, 255));
+		cuadro[9][5].setBackground(new Color(20, 100, 255));
+		cuadro[9][9].setBackground(new Color(20, 100, 255));
+		cuadro[9][13].setBackground(new Color(20, 100, 255));
+		cuadro[13][5].setBackground(new Color(20, 100, 255));
+		cuadro[13][9].setBackground(new Color(20, 100, 255));
+		cuadro[5][7].setBackground(new Color(20, 100, 255));
 
 		mover();
 
@@ -261,7 +331,7 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		Object src = e.getSource();
 		if (src == arriba) {
 			if (y <= 15) {
-
+				lock = true;
 				temp2 = temp;
 				temp2.setBackground(color);
 				setDxy(-1, 0);
@@ -269,6 +339,7 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		}
 		if (src == abajo) {
 			if (y >= 0) {
+				lock = true;
 				temp2 = temp;
 				temp2.setBackground(color);
 				setDxy(1, 0);
@@ -276,6 +347,7 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		}
 		if (src == derecha) {
 			if (x < 15) {
+				lock = true;
 				temp2 = temp;
 				temp2.setBackground(color);
 				setDxy(0, 1);
@@ -283,13 +355,14 @@ public class Main extends JFrame implements Runnable, ActionListener {
 		}
 		if (src == izquierda) {
 			if (x > 0) {
+				lock = true;
 				temp2 = temp;
 				temp2.setBackground(color);
 				setDxy(0, -1);
 			}
 		}
 		if (src == poner) {
-			lock = false;
+			lock = true;
 			poner();
 		}
 
