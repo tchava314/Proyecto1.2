@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Lista<Ele> {
 
+	@SuppressWarnings("unused")
 	private static BufferedReader br;
 	Nodo<Ele> head;
 	protected int size;
