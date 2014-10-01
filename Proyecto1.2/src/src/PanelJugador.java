@@ -23,12 +23,16 @@ public class PanelJugador extends JPanel implements ActionListener {
 	char let;
 	public boolean rifa = false;
 	String texto;
+	private Casilla cas;
 
 	public Lista<String> lista1;
 
 	Lista<JButton> listaBotones = new Lista<JButton>();
+	public int z;
+	private int pos;
 
 	PanelJugador() {
+
 		setLayout(new GridLayout(2, 0, 20, 20));
 		Rifa = new JButton("Rifa");
 		Rifa.setBackground(new Color(127, 255, 212));// Se cambia el color
@@ -46,10 +50,7 @@ public class PanelJugador extends JPanel implements ActionListener {
 
 		fondo = this.getClass().getResource("Imagenes/fondo.jpg"); // trae la
 																	// imagen
-		// scra = new ImageIcon(fondo).getImage(); // ubica la imagen en la
-		// ventana
 
-		// acciones del boton
 		Rifa.addActionListener(this);
 
 		// add(texto);
@@ -62,10 +63,10 @@ public class PanelJugador extends JPanel implements ActionListener {
 
 	}
 
-	public void setText(Tablero atril2) {
+	public void setAtril(Tablero atril) {
 		for (int i = 0; i < 7; i++) {
 			listaBotones.getObject(i).setText(
-					atril2.getCas(i, 1).getFicha().getLetra());
+					atril.getCas(i, 1).getFicha().getLetra());
 
 		}
 
@@ -84,6 +85,10 @@ public class PanelJugador extends JPanel implements ActionListener {
 		return texto;
 	}
 
+	public int pos() {
+		return pos;
+	}
+
 	public void actionPerformed(ActionEvent e) {// sobreescribimos el metodo del
 												// listener
 
@@ -98,7 +103,8 @@ public class PanelJugador extends JPanel implements ActionListener {
 			if (e.getSource() == listaBotones.getObject(i)) {
 
 				texto = listaBotones.getObject(i).getText();
-				System.out.println(texto);
+				pos = i;
+
 			}
 		}
 
