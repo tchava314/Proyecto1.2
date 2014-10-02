@@ -63,10 +63,9 @@ public class PanelJugador extends JPanel implements ActionListener {
 
 	}
 
-	public void setAtril(Tablero atril) {
+	public void setAtril(Atril atril1) {
 		for (int i = 0; i < 7; i++) {
-			listaBotones.getObject(i).setText(
-					atril.getCas(i, 1).getFicha().getLetra());
+			listaBotones.getObject(i).setText(atril1.getFicha(i).getLetra());
 
 		}
 

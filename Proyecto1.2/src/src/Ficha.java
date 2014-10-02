@@ -16,6 +16,10 @@ public class Ficha {
 		return letra;
 	}
 
+	public void borraLetra() {
+		letra = null;
+	}
+
 	public int getValor() {// metodo que retorna el valor de la variable valor
 		return valor;
 	}

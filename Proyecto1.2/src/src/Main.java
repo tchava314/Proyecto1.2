@@ -31,15 +31,15 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	private static Main m1;
 	private String rifa1, rifa2, text;
 
-	Tablero atril1, atril2;
+	Atril atril1, atril2;
 	private Color color;
 	private boolean move = true;
+	private Bolsa bolsa = new Bolsa();
 
 	public Main() {
 
-		Lista<Ficha> bolsa = new Fichas().crearFichas();
-		atril1 = new Atril().repartirFichas(bolsa);
-		atril2 = new Atril().repartirFichas(bolsa);
+		atril1 = new Atril(bolsa);
+		atril2 = new Atril(bolsa);
 
 		setSize(1300, 700); // tamano de la ventana
 		setTitle("Scrabble"); // titulo de la ventana
@@ -209,7 +209,7 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	private void poner() {
 		temp.setBackground(new Color(255, 255, 255));
 		temp.setText(text);
-		atril1.getCas(jug1.pos(), 1).setFicha(new Ficha(0, null));
+		atril1.setFicha(jug1.pos());
 
 	}
 

@@ -1,36 +1,35 @@
-public class Atril extends Tablero {
+public class Atril extends Lista<Ficha> {
 
-	private final int sizeX = 7, sizeY = 1;
-	Tablero atril = new Tablero();
+	private Bolsa bolsa;
+	Lista<Ficha> atril = new Lista<Ficha>();
 
-	public Atril() { // constructor
-		super.newTab(sizeX, sizeY);
-
+	public Atril(Bolsa bolsa) { // constructor
+		this.bolsa = bolsa;
+		this.repartirFichas(bolsa);
 	}
 
-	public Tablero repartirFichas(Lista<Ficha> bolsa) {
+	public void repartirFichas(Bolsa bolsa) {
 		for (int i = 0; i < 7; i++) {
 			Ficha x = bolsa.EleAzar();
-			Casilla cas = new Casilla(x);
 
-			atril.getCas(i, 1).setFicha(x);
+			atril.addDataEnd(x);
+			;
 
 		}
-		return atril;
+
 	}
 
-	public Casilla getFicha(int x, int y) {// metodo que devuelve una ficha en
-											// la posicion x,y
+	public Ficha getFicha(int x) {// metodo que devuelve una ficha en
+									// la posicion x,y
 
-		Casilla fichaXY = super.getCas(x, y);
+		Ficha fichaXY = atril.getObject(x);
 		return fichaXY;
 	}
 
-	public void setFicha(Casilla newCas, int x, int y) {// metodo que le da
-														// nuevos valores a una
-														// ficha existente en la
-														// posicion x,y,
-		super.setCas(newCas, x, y);
+	public void setFicha(int x) {// metodo que le da
+									// nuevos valores a una
+		atril.getObject(x).borraLetra();
+		// ficha existente en la // posicion x,y
 
 	}
 }
