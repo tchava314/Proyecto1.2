@@ -207,9 +207,10 @@ public class Main extends JFrame implements Runnable, ActionListener {
 	}
 
 	private void poner() {
-		temp.setBackground(new Color(255, 255, 255));
+		// temp.setBackground(new Color(255, 255, 255));
 		temp.setText(text);
 		atril1.setFicha(jug1.pos());
+		atril1.rellenar(bolsa);
 
 	}
 

@@ -20,11 +20,20 @@ public class Ficha {
 		letra = null;
 	}
 
+	public void setLetra(String text) {
+		letra = text;
+	}
+
 	public int getValor() {// metodo que retorna el valor de la variable valor
 		return valor;
 	}
 
 	public char getChar() {
 		return letra.charAt(0);
+	}
+
+	public void setValor(int valor) {
+		this.valor = valor;
+
 	}
 }

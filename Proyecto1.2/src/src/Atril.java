@@ -32,4 +32,21 @@ public class Atril extends Lista<Ficha> {
 		// ficha existente en la // posicion x,y
 
 	}
+
+	public void setFicha(int x, Ficha newficha) {// metodo que le da
+		// nuevos valores a una
+		atril.getObject(x).setLetra(newficha.getLetra());
+		atril.getObject(x).setValor(newficha.getValor());
+		// ficha existente en la // posicion x,y
+
+	}
+
+	public void rellenar(Bolsa bolsa) {
+		Ficha newFicha = bolsa.EleAzar();
+		for (int i = 0; i < 7; i++) {
+			Ficha casillaAtril = this.getFicha(i);
+			if (casillaAtril.getLetra() == null)
+				setFicha(i, new Ficha(newFicha.getValor(), newFicha.getLetra()));
+		}
+	}
 }
